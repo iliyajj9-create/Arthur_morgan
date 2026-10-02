@@ -1,0 +1,500 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #080706;
+    --brown: #8b5a32;
+    --gold: #c69b63;
+    --cream: #e4d2b5;
+    --muted: #8d8172;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: "Vazirmatn", sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* Noise */
+
+.noise {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+    opacity: .08;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+
+/* Moving background names */
+
+.moving-names {
+    position: fixed;
+    inset: -20%;
+    z-index: -1;
+    transform: rotate(-15deg);
+    opacity: .055;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.moving-names span {
+    display: block;
+    white-space: nowrap;
+    font-family: "Cinzel", serif;
+    font-size: clamp(45px, 8vw, 120px);
+    font-weight: 900;
+    letter-spacing: 10px;
+    line-height: 1.7;
+}
+
+.moving-names span:nth-child(odd) {
+    animation: moveRight 20s linear infinite;
+}
+
+.moving-names span:nth-child(even) {
+    animation: moveLeft 25s linear infinite;
+}
+
+@keyframes moveRight {
+    from {
+        transform: translateX(-10%);
+    }
+
+    to {
+        transform: translateX(10%);
+    }
+}
+
+@keyframes moveLeft {
+    from {
+        transform: translateX(10%);
+    }
+
+    to {
+        transform: translateX(-10%);
+    }
+}
+
+
+/* Hero */
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(120, 75, 35, .18),
+            transparent 45%
+        );
+}
+
+.hero-content {
+    max-width: 1100px;
+    animation: appear 1.5s ease forwards;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.small-title {
+    font-family: "Cinzel", serif;
+    letter-spacing: 7px;
+    color: var(--gold);
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-family: "Cinzel", serif;
+    font-size: clamp(65px, 13vw, 180px);
+    line-height: .82;
+    font-weight: 900;
+    letter-spacing: -5px;
+    color: #e9dcc8;
+
+    text-shadow:
+        0 0 50px rgba(198, 155, 99, .15);
+}
+
+h1 span {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--gold);
+}
+
+.line {
+    width: 120px;
+    height: 1px;
+    background: var(--gold);
+    margin: 35px auto 20px;
+}
+
+.subtitle {
+    font-family: "Cinzel", serif;
+    letter-spacing: 5px;
+    font-size: 13px;
+    color: #a89a88;
+}
+
+.intro {
+    max-width: 600px;
+    margin: 30px auto;
+    color: #918576;
+    line-height: 2;
+    font-size: 15px;
+}
+
+.story-btn {
+    margin-top: 15px;
+    padding: 16px 30px;
+    border: 1px solid rgba(198,155,99,.5);
+    background: transparent;
+    color: var(--gold);
+    font-family: "Cinzel", serif;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.story-btn span {
+    margin-right: 10px;
+}
+
+.story-btn:hover {
+    background: var(--gold);
+    color: #090806;
+    box-shadow: 0 0 30px rgba(198,155,99,.25);
+}
+
+
+/* Scroll */
+
+.scroll {
+    position: absolute;
+    bottom: 25px;
+    font-family: "Cinzel", serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #716759;
+}
+
+.scroll div {
+    width: 1px;
+    height: 35px;
+    background: var(--gold);
+    margin: 10px auto 0;
+    animation: scrollLine 1.5s infinite;
+}
+
+@keyframes scrollLine {
+    0%,100% {
+        opacity: .2;
+        transform: scaleY(.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+
+/* Information */
+
+.information {
+    padding: 140px 8%;
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(20,15,11,.9)
+        );
+}
+
+.section-heading {
+    max-width: 700px;
+    margin-bottom: 70px;
+}
+
+.section-heading span {
+    font-family: "Cinzel", serif;
+    color: var(--gold);
+    letter-spacing: 5px;
+    font-size: 12px;
+}
+
+.section-heading h2 {
+    font-family: "Cinzel", serif;
+    font-size: clamp(35px, 6vw, 75px);
+    margin: 10px 0 20px;
+}
+
+.section-heading p {
+    color: #817568;
+    line-height: 2;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.info-card {
+    min-height: 220px;
+    padding: 30px;
+    border: 1px solid rgba(198,155,99,.12);
+    background: rgba(255,255,255,.015);
+    transition: .4s;
+}
+
+.info-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(198,155,99,.5);
+    background: rgba(198,155,99,.04);
+}
+
+.info-card span {
+    font-family: "Cinzel", serif;
+    color: #5e5144;
+}
+
+.info-card h3 {
+    margin-top: 60px;
+    margin-bottom: 10px;
+    color: var(--gold);
+}
+
+.info-card p {
+    color: #a79a89;
+    font-family: "Cinzel", serif;
+    font-size: 13px;
+}
+
+
+/* Quote */
+
+.quote-section {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 100px 20px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(125,75,35,.13),
+            transparent 60%
+        );
+}
+
+.quote-symbol {
+    font-family: Georgia, serif;
+    font-size: 100px;
+    color: var(--gold);
+    opacity: .5;
+    height: 70px;
+}
+
+.arabic {
+    max-width: 900px;
+    direction: rtl;
+    font-size: clamp(20px, 3vw, 32px);
+    line-height: 2.2;
+    color: #d9c7ae;
+    margin-top: 20px;
+}
+
+.quote-fa {
+    max-width: 750px;
+    color: #827566;
+    line-height: 2;
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+.quote-note {
+    margin-top: 25px;
+    color: #584b3d;
+    font-size: 11px;
+}
+
+
+/* Counter */
+
+.counter-section {
+    text-align: center;
+    padding: 120px 20px;
+    border-top: 1px solid rgba(198,155,99,.08);
+}
+
+.counter-label {
+    font-family: "Cinzel", serif;
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 5px;
+}
+
+.counter-section h2 {
+    font-size: 42px;
+    margin: 10px 0 35px;
+}
+
+.counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.counter-button {
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgba(198,155,99,.4);
+    background: transparent;
+    color: var(--gold);
+    font-size: 30px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.counter-button:hover {
+    background: var(--gold);
+    color: #080706;
+}
+
+.number {
+    min-width: 150px;
+    font-family: "Cinzel", serif;
+    font-size: 65px;
+    color: #dfccb0;
+    transition: .15s;
+}
+
+.number.bump {
+    transform: scale(1.15);
+}
+
+.reset {
+    margin-top: 25px;
+    border: none;
+    background: transparent;
+    color: #5e5144;
+    font-family: "Cinzel", serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+.reset:hover {
+    color: var(--gold);
+}
+
+.counter-text {
+    margin-top: 25px;
+    color: #685b4d;
+    font-size: 12px;
+}
+
+
+/* Footer */
+
+footer {
+    border-top: 1px solid rgba(198,155,99,.08);
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.footer-name {
+    font-family: "Cinzel", serif;
+    letter-spacing: 8px;
+    font-weight: 700;
+    color: #725a41;
+}
+
+footer p {
+    margin-top: 15px;
+    font-family: "Cinzel", serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #42382f;
+}
+
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .information {
+        padding: 100px 25px;
+    }
+
+    h1 {
+        letter-spacing: -3px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-card {
+        min-height: 180px;
+    }
+
+    .info-card h3 {
+        margin-top: 35px;
+    }
+
+    .arabic {
+        font-size: 18px;
+    }
+
+    .counter-button {
+        width: 50px;
+        height: 50px;
+    }
+
+    .number {
+        font-size: 50px;
+        min-width: 110px;
+    }
+}
